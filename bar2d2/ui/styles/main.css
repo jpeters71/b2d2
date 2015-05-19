@@ -1,0 +1,105 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  height:100%;
+  background-color: #444;
+}
+h1{
+  font-size:1em;
+  text-align:center;
+  color: #eee;
+  letter-spacing:1px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+.nav-container{
+  width:300px;
+  margin-top:10px;
+  box-shadow: 0 2px 2px 2px black;
+  transition: all 0.3s linear;
+  float:left;
+}
+.nav{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+.content{
+  margin-left:305px;
+}
+ul.nav li{
+  height:50px; 
+  position:relative;
+  background: linear-gradient(#FACC2E, #F4FA58);
+}
+.drink_item{
+  list-style-type: none;
+  color: #FACC2E;
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 22px;
+  vertical-align: text-top;
+}
+a {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid black;
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  text-decoration:none;
+  display:block;
+  height:100%;
+  width:100%;
+  line-height:50px;
+  color:#210B61;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-left:25%;
+  border-left:5px solid transparent;
+  letter-spacing:1px;
+  transition: all 0.3s linear;
+}
+.active a{
+  color: #FACC2E;
+  border-left:5px solid #FACC2E;
+  background-color: #210B61;
+  outline:0;
+}
+li:not(.active):hover a{
+  color: #9A2EFE;
+  border-left: 5px solid #FCFCFC;
+  background-color: #FACC2E;
+}
+span[class ^= "icon"]{
+  position:absolute;
+  left:20px;
+  font-size: 40.0em;
+  transition: all 0.3s linear;
+}
+
+@media only screen and (max-width : 860px){
+  
+  .text{
+    display:none;
+  }
+  
+  .nav-container , a{
+    width: 70px;
+    
+  }
+   
+  a:hover{
+    width:200px; 
+    z-index:1;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid black;
+    box-shadow: 0 0 1px 1px black;
+  }
+  
+  a:hover  .text {
+    display:block;
+    padding-left:30%;
+  }
+}
+@media only screen and (max-width : 480px){
+  .nav-container, a{ width:50px;}
+  span[class ^= "icon"]{ left:8px;}
+}
