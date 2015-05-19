@@ -50,4 +50,7 @@ $(document).ready(function(){
         });
     });
 
+    // Start it up
+    $("#mnu_drinks").click();
+
 });
