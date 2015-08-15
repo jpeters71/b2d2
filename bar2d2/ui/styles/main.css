@@ -3,7 +3,7 @@
 }
 body{
   height:100%;
-  background-color: #444;
+  background-color: #210B61;
 }
 h1{
   font-size:1em;
@@ -13,11 +13,12 @@ h1{
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 .nav-container{
-  width:300px;
-  margin-top:10px;
+  width:60px;
+  margin-top:0px;
   box-shadow: 0 2px 2px 2px black;
   transition: all 0.3s linear;
   float:left;
+  vertical-align: top;
 }
 .nav{
   list-style-type:none;
@@ -25,10 +26,41 @@ h1{
   padding:0;
 }
 .content{
-  margin-left:305px;
+  margin-top: 0px;
+  margin-left:2px;
+  margin-right:2px;
+  vertical-align: top;
+  height: 100%;
 }
+.content>h2{
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 22px;
+  height: 25px;
+  text-align: center;  
+  color: #FACC2E;
+  vertical-align: top;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
+.content * ul{
+  margin-top: 2px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  height: calc(100% - 30px);
+  overflow-y: scroll;
+}
+
+.list{
+  height: 100%;
+}
+
 ul.nav li{
-  height:50px; 
+  height:60px; 
   position:relative;
   background: linear-gradient(#FACC2E, #F4FA58);
 }
@@ -39,11 +71,15 @@ ul.nav li{
   font-size: 22px;
   vertical-align: text-top;
 }
+.drink_item>img{
+  width: 60px;
+  height: 60px;
+}
 a {
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid black;
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-decoration:none;
   display:block;
   height:100%;
@@ -52,8 +88,8 @@ a {
   color:#210B61;
   text-transform: uppercase;
   font-weight: bold;
-  padding-left:25%;
-  border-left:5px solid transparent;
+  text-align: center;
+  
   letter-spacing:1px;
   transition: all 0.3s linear;
 }

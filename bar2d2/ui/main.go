@@ -14,5 +14,6 @@ func main() {
 	http.HandleFunc("/svc/ingredients", services.IngredientHandler)
 	http.HandleFunc("/svc/recipes", services.RecipeHandler)
 	http.HandleFunc("/svc/available-recipes", services.AvailableHandler)
+	http.HandleFunc("/svc/available-recipes-light", services.AvailableHandlerLight)
 	http.ListenAndServe(":8080", nil)
 }

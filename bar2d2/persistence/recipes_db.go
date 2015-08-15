@@ -13,7 +13,7 @@ func GetAllRecipes() ([]dto.Recipe, error) {
 	checkErr(err)
 
     // query
-    rows, err := db.Query("SELECT recipeId, title, description, image FROM recipes")
+    rows, err := db.Query("SELECT recipeId, title, description, image FROM recipes ORDER BY title")
     checkErr(err)
 
     for rows.Next() {

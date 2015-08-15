@@ -17,5 +17,17 @@ func AvailableHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, string(jsonRecipes))
 		w.Header().Set("Content-Type", "application/json")
 	}
-
 }
+
+func AvailableHandlerLight(w http.ResponseWriter, r *http.Request) {
+	
+	if (strings.EqualFold(r.Method, "GET")) {
+		aRecipes, _ := persistence.GetAvailableRecipesLight()
+		jsonRecipes, _ := json.Marshal(aRecipes)
+
+		fmt.Fprintf(w, string(jsonRecipes))
+		w.Header().Set("Content-Type", "application/json")
+	}
+}
+
+
