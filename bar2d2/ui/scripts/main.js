@@ -29,10 +29,11 @@ $(document).ready(function(){
             for (var i=0; i < data.length; i++) {
                 var item = data[i];
 
-                html += "<li class='drink_item' id='" + item.Id + "''><img height='100' width='100' src='data:image/png;base64," + item.Image + "'/>" + item.Title + "</li>";
+                html += "<li class='drink_item' id='" + item.Id + "''><img src='data:image/png;base64," + item.Image + "'/>" + item.Title + "</li>";
             }
             html += "</ul>";
-            $("#content").html(html);
+            $("#title").html("Recipes");
+            $("#list").html(html);
         });
     });
 
@@ -47,7 +48,8 @@ $(document).ready(function(){
                 html += "<li class='drink_item' id='" + item.Id + "''>" + item.Title + "</li>";
             }
             html += "</ul>";
-            $("#content").html(html);
+            $("#title").html("Ingredients");
+            $("#list").html(html);
         });
     });
 
