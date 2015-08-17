@@ -2,8 +2,7 @@ package persistence
 
 import (
 	"database/sql"
-    "fmt"
-	"bozos.on.parade.com/bar2d2/dto"
+	"bozos.on.parade.com/b2d2/bar2d2/dto"
 )
 
 func GetAvailableRecipes() ([]dto.Recipe, error) {

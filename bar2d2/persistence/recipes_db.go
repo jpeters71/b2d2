@@ -2,7 +2,7 @@ package persistence
 
 import (
 	"database/sql"
-	"bozos.on.parade.com/bar2d2/dto"
+	"bozos.on.parade.com/b2d2/bar2d2/dto"
 )
 
 

@@ -2,7 +2,7 @@ package services
 
 import (
 	"encoding/json"	
-	"bozos.on.parade.com/bar2d2/persistence"
+	"bozos.on.parade.com/b2d2/bar2d2/persistence"
 	"fmt"
 	"net/http"
 	"strings"

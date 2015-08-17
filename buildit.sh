@@ -1,18 +1,18 @@
 #!/bin/bash
 
-pushd dto
+pushd bar2d2/dto
 go install 
 popd
 
-pushd persistence
+pushd bar2d2/persistence
 go install
 popd
 
-pushd services
+pushd bar2d2/services
 go install 
 popd
 
-pushd ui
+pushd bar2d2/ui
 go build
 go install 
 popd
