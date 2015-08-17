@@ -19,7 +19,7 @@ var suffixMap = map[string]string{
 }
 func UiHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/ui/"):]
-	filename := "/home/johnp/go/src/bozos.on.parade.com/bar2d2/ui/" + title
+	filename := docPath + title
 	fmt.Printf("Path: %s.\n", filename)
 	body, _ := ioutil.ReadFile(filename)
 	//fmt.Printf("Body: %s.\n", body)

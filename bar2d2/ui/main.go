@@ -7,15 +7,21 @@ import (
 	"bozos.on.parade.com/b2d2/bar2d2/persistence"
 	"bozos.on.parade.com/b2d2/bar2d2/services"
 )
-var pDBPath *string
+var dbPath string
+var docPath string
 
 func main() {
-	pDBPath = flag.String("db", "./b2d2db.sqlite3", "path to the SQLite3 Bar2D2 DB.")
-
+	pRootPath := flag.String("root", ".", "root path to Bar2D2.")
 	flag.Parse()
-	fmt.Printf("Bar2D2 coming online.\nDB Path: %s\n", *pDBPath)
 
-	persistence.InitPers(pDBPath)
+	dbPath = fmt.Sprintf("%s/b2d2db.sqlite3", *pRootPath)
+	docPath = fmt.Sprintf("%s/ui/", *pRootPath)
+
+	fmt.Printf("Bar2D2 coming online.\n")
+	fmt.Printf("DB Path: %s\n", dbPath)
+	fmt.Printf("Doc Path: %s\n", docPath)
+
+	persistence.InitPers(&dbPath)
 	fmt.Printf("Hello, world.\n")
 	http.HandleFunc("/ui/", UiHandler)
 	http.HandleFunc("/svc/ingredients", services.IngredientHandler)
