@@ -7,8 +7,9 @@ import (
 )
 
 var bInitialized bool = false
+var pDBPath *string = nil
 
-func InitPers() {
+func InitPers(pdbpath *string) {
 	if !bInitialized {
 		fmt.Printf("Registering driver.\n")
 
@@ -17,6 +18,7 @@ func InitPers() {
 		//sql.Register("sqlite3", &sqlite3.SQLiteDriver{})
 		fmt.Printf("DB driver %s.\n", DB_DRIVER)
 		bInitialized = true
+		pDBPath = pdbpath
 	}
 }
 

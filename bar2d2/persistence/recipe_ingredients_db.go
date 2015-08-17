@@ -2,14 +2,13 @@ package persistence
 
 import (
 	"database/sql"
+    "fmt"
 	"bozos.on.parade.com/bar2d2/dto"
 )
 
-
 func GetAvailableRecipes() ([]dto.Recipe, error) {
-
-	aRecipes := []dto.Recipe{}
-	db, err := sql.Open("sqlite3", "/home/johnp/b2d2/b2d2db.sqlite3")
+    aRecipes := []dto.Recipe{}
+	db, err := sql.Open("sqlite3", *pDBPath)
 	checkErr(err)
 
     // query
@@ -32,7 +31,7 @@ func GetAvailableRecipes() ([]dto.Recipe, error) {
 func GetAvailableRecipesLight() ([]dto.Recipe, error) {
 
     aRecipes := []dto.Recipe{}
-    db, err := sql.Open("sqlite3", "/home/johnp/b2d2/b2d2db.sqlite3")
+    db, err := sql.Open("sqlite3", *pDBPath)
     checkErr(err)
 
     // query

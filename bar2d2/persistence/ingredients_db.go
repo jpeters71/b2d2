@@ -9,7 +9,7 @@ import (
 func GetAllIngredients() ([]dto.Ingredient, error) {
 
 	aIngs := []dto.Ingredient{}
-	db, err := sql.Open("sqlite3", "/home/johnp/b2d2/b2d2db.sqlite3")
+	db, err := sql.Open("sqlite3", *pDBPath)
 	checkErr(err)
 
     // query

@@ -9,7 +9,7 @@ import (
 func GetAllRecipes() ([]dto.Recipe, error) {
 
 	aRecipes := []dto.Recipe{}
-	db, err := sql.Open("sqlite3", "/home/johnp/b2d2/b2d2db.sqlite3")
+	db, err := sql.Open("sqlite3", *pDBPath)
 	checkErr(err)
 
     // query

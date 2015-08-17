@@ -9,7 +9,7 @@ import (
 )
 
 func AvailableHandler(w http.ResponseWriter, r *http.Request) {
-	
+	fmt.Printf("AvailableHandler called\n")
 	if (strings.EqualFold(r.Method, "GET")) {
 		aRecipes, _ := persistence.GetAvailableRecipes()
 		jsonRecipes, _ := json.Marshal(aRecipes)
@@ -20,6 +20,7 @@ func AvailableHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func AvailableHandlerLight(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("AvailableHandlerLight called\n")
 	
 	if (strings.EqualFold(r.Method, "GET")) {
 		aRecipes, _ := persistence.GetAvailableRecipesLight()
