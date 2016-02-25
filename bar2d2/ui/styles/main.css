@@ -13,7 +13,7 @@ h1{
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 .nav-container{
-  width:60px;
+  width:80px;
   margin-top:0px;
   box-shadow: 0 2px 2px 2px black;
   transition: all 0.3s linear;
@@ -35,7 +35,7 @@ h1{
 .content>h2{
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 22px;
-  height: 25px;
+  height: 35px;
   text-align: center;  
   color: #FACC2E;
   vertical-align: top;
@@ -51,7 +51,7 @@ h1{
   margin-left: 5px;
   margin-right: 5px;
   padding-left: 5px;
-  height: calc(100% - 30px);
+  height: calc(100% - 40px);
   overflow-y: scroll;
 }
 
@@ -60,7 +60,7 @@ h1{
 }
 
 ul.nav li{
-  height:60px; 
+  height:80px; 
   position:relative;
   background: linear-gradient(#FACC2E, #F4FA58);
 }
@@ -68,18 +68,18 @@ ul.nav li{
   list-style-type: none;
   color: #FACC2E;
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 22px;
+  font-size: 32px;
   vertical-align: text-top;
 }
 .drink_item>img{
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 a {
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid black;
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 40px;
   text-decoration:none;
   display:block;
   height:100%;

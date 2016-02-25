@@ -1,16 +1,16 @@
 package services
 
 import (
-	"encoding/json"	
-	"bozos.on.parade.com/b2d2/bar2d2/persistence"
+	"bozosonparade/b2d2/bar2d2/persistence"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"strings"
 )
 
 func IngredientHandler(w http.ResponseWriter, r *http.Request) {
-	
-	if (strings.EqualFold(r.Method, "GET")) {
+
+	if strings.EqualFold(r.Method, "GET") {
 		aIngs, _ := persistence.GetAllIngredients()
 		jsonIngs, _ := json.Marshal(aIngs)
 

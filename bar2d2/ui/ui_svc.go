@@ -6,18 +6,20 @@ import (
 	"net/http"
 	"strings"
 )
+
 var suffixMap = map[string]string{
 	"html": "text/html",
-	"htm": "text/html",
-	"js": "application/javascript",
-	"css": "text/css",
-	"eot": "application/vnd.ms-fontobject",
+	"htm":  "text/html",
+	"js":   "application/javascript",
+	"css":  "text/css",
+	"eot":  "application/vnd.ms-fontobject",
 	"woff": "application/font-woff",
-	"tff": "application/x-font-truetype",
-	"svg": "image/svg+xml",
-	"otf": "application/x-font-opentype",
+	"tff":  "application/x-font-truetype",
+	"svg":  "image/svg+xml",
+	"otf":  "application/x-font-opentype",
 }
-func UiHandler(w http.ResponseWriter, r *http.Request) {
+
+func UIHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/ui/"):]
 	filename := docPath + title
 	fmt.Printf("Path: %s.\n", filename)

@@ -1,8 +1,8 @@
 package services
 
 import (
-	"encoding/json"	
-	"bozos.on.parade.com/b2d2/bar2d2/persistence"
+	"bozosonparade/b2d2/bar2d2/persistence"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"strings"
@@ -10,7 +10,7 @@ import (
 
 func AvailableHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("AvailableHandler called\n")
-	if (strings.EqualFold(r.Method, "GET")) {
+	if strings.EqualFold(r.Method, "GET") {
 		aRecipes, _ := persistence.GetAvailableRecipes()
 		jsonRecipes, _ := json.Marshal(aRecipes)
 
@@ -21,8 +21,8 @@ func AvailableHandler(w http.ResponseWriter, r *http.Request) {
 
 func AvailableHandlerLight(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("AvailableHandlerLight called\n")
-	
-	if (strings.EqualFold(r.Method, "GET")) {
+
+	if strings.EqualFold(r.Method, "GET") {
 		aRecipes, _ := persistence.GetAvailableRecipesLight()
 		jsonRecipes, _ := json.Marshal(aRecipes)
 
@@ -30,5 +30,3 @@ func AvailableHandlerLight(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 	}
 }
-
-

@@ -1,12 +1,13 @@
 package main
 
 import (
+	"bozosonparade/b2d2/bar2d2/persistence"
+	"bozosonparade/b2d2/bar2d2/services"
 	"flag"
 	"fmt"
 	"net/http"
-	"bozos.on.parade.com/b2d2/bar2d2/persistence"
-	"bozos.on.parade.com/b2d2/bar2d2/services"
 )
+
 var dbPath string
 var docPath string
 
@@ -23,10 +24,11 @@ func main() {
 
 	persistence.InitPers(&dbPath)
 	fmt.Printf("Hello, world.\n")
-	http.HandleFunc("/ui/", UiHandler)
+	http.HandleFunc("/ui/", UIHandler)
 	http.HandleFunc("/svc/ingredients", services.IngredientHandler)
 	http.HandleFunc("/svc/recipes", services.RecipeHandler)
 	http.HandleFunc("/svc/available-recipes", services.AvailableHandler)
 	http.HandleFunc("/svc/available-recipes-light", services.AvailableHandlerLight)
+	fmt.Printf("Starting service on port 8080")
 	http.ListenAndServe(":8080", nil)
 }
