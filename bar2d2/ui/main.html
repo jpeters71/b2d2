@@ -3,8 +3,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="styles/main.css ">
         <link rel="stylesheet" type="text/css" href="styles/css/font-awesome.css">
-
+        <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css ">
+        
         <script src="scripts/jquery-1.11.2.js"></script>
+        <script src="scripts/jquery-ui.js"></script>
         <script src="scripts/main.js"></script>
     </head>
     <body>
@@ -37,6 +39,12 @@
                 <h2 id="title"></h2>
                 <div id="list" class="list"></div>
             </div>
+        </div>
+        <div id="drink_popup" title="Drink This!">
+            <img id="drink_popup_img"/>
+            <div id="drink_popup_text"/>
+            <button type="button" id="drink_popup_make">Make It!</button>
+            <button type="reset" id="drink_popup_cancel">Cancel</button>
         </div>
     </body>
 </html>

@@ -1,11 +1,18 @@
 
 $(document).ready(function(){
-    $('li').click(function(){
-      
-      $(this).addClass('active')
+    $("#drink_popup").dialog({
+        autoOpen: false
+    });
+    
+    $("li").click(function(){
+      $(this).addClass("active")
            .siblings()
-           .removeClass('active');
-    });                
+           .removeClass("active");
+    }); 
+    
+    $("li.drink_item").click(function() {
+        alert("ID: " + this.id);
+    })
 
     $("#mnu_drinks").click(function(){
         var html = "";
