@@ -10,10 +10,6 @@ $(document).ready(function(){
            .removeClass("active");
     }); 
     
-    $("li.drink_item").click(function() {
-        alert("ID: " + this.id);
-    })
-
     $("#mnu_drinks").click(function(){
         var html = "";
         $.getJSON("/svc/available-recipes", function(data) {
@@ -26,7 +22,13 @@ $(document).ready(function(){
             html += "</ul>";
             $("#title").html("Select Drink");
             $("#list").html(html);
-        });
+
+            $(".drink_item").click(function() {
+                alert("Test");
+                alert("ID: " + this.id);
+            });
+
+        }); 
     });
 
     $("#mnu_recipes").click(function(){
