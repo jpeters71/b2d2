@@ -1,7 +1,18 @@
 
 $(document).ready(function(){
     $("#drink_popup").dialog({
-        autoOpen: false
+        autoOpen: false,
+        modal: true,
+        width: 600,
+        height: 350,
+        buttons: {
+                  "Make It": function() {
+                      $(this).dialog("close");
+                  },
+                  Cancel: function() {
+                      $(this).dialog("close");
+                  }
+        },        
     });
     
     $("li").click(function(){
@@ -24,8 +35,19 @@ $(document).ready(function(){
             $("#list").html(html);
 
             $(".drink_item").click(function() {
-                alert("Test");
-                alert("ID: " + this.id);
+                // Set things up.  Start by clearing stuff
+                $("#drink_popup_text").html("");
+                $("#drink_popup_img").attr("src", "styles/ajax-loader.gif");
+                $("#drink_popup").dialog("open");
+                
+                // Run ajax to get this item
+                $.getJSON("/svc/recipes/" + this.id, function(data) {
+                    $("#drink_popup").dialog({
+                        title: data.Title
+                    });
+                    $("#drink_popup_text").html(data.Description);
+                    $("#drink_popup_img").attr("src", "data:image/png;base64," + data.Image);
+                });
             });
 
         }); 

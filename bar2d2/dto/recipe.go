@@ -1,9 +1,8 @@
 package dto
 
 type Recipe struct {
-	Id int
-	Title string
+	Id          int
+	Title       string
 	Description string
-	Image []byte
+	Image       []byte
 }
-

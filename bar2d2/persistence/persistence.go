@@ -1,8 +1,8 @@
 package persistence
 
 import (
-	"fmt"
 	"database/sql"
+	"fmt"
 	"github.com/mattn/go-sqlite3"
 )
 
@@ -14,7 +14,7 @@ func InitPers(pdbpath *string) {
 		fmt.Printf("Registering driver.\n")
 
 		var DB_DRIVER string
-		sql.Register(DB_DRIVER, &sqlite3.SQLiteDriver{})		
+		sql.Register(DB_DRIVER, &sqlite3.SQLiteDriver{})
 		//sql.Register("sqlite3", &sqlite3.SQLiteDriver{})
 		fmt.Printf("DB driver %s.\n", DB_DRIVER)
 		bInitialized = true
