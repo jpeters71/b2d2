@@ -2,7 +2,7 @@
 # Go parameters
 GOCMD=go
 GOGET=$(GOCMD) get
-GOBUILD=$(GOCMD) build
+GOBUILD=$(GOCMD) build 
 GOCLEAN=$(GOCMD) clean
 GOINSTALL=$(GOCMD) install
 GOTEST=$(GOCMD) test
@@ -37,7 +37,7 @@ setup:
 	$(GOGET) github.com/mattn/go-sqlite3
 
 $(BUILD_LIST): %_build:  
-	$(GOBUILD) ./$*
+	cd ./$*; $(GOBUILD) .
 $(CLEAN_LIST): %_clean:
 	$(GOCLEAN) ./$*
 $(INSTALL_LIST): %_install:
