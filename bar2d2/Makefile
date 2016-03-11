@@ -15,21 +15,31 @@ DTO_LIST := dto
 PERSISTENCE := persistence
 SERVICES := services
 UI := ui
+GPIO_RPI := gpio_rpi
+GPIO_OTHER := gpio_stub
 
 # List building
 ALL_LIST = $(DTO_LIST) $(PERSISTENCE) $(SERVICES) $(UI)
 
-BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build)
+CPU_TYPE = $(shell uname -m)
+ifeq ($(CPU_TYPE),arm7l)
+	GPIO_LIST = $(GPIO_RPI)
+else
+	GPIO_LIST = $(GPIO_OTHER)
+endif
+
+BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build) $(foreach int, $(GPIO_LIST), $(int)_build) 
 CLEAN_LIST = $(foreach int, $(ALL_LIST), $(int)_clean)
 INSTALL_LIST = $(foreach int, $(ALL_LIST), $(int)_install)
 TEST_LIST = $(foreach int, $(ALL_LIST), $(int)_test)
 FMT_TEST = $(foreach int, $(ALL_LIST), $(int)_fmt)
 
-CPU_TYPE = $(shell uname -m)
 
 all: $(info CPU is $(CPU_TYPE)) build
 
-build: $(BUILD_LIST)
+
+build: $(BUILD_LIST) 
+
 clean: $(CLEAN_LIST)
 install: $(INSTALL_LIST)
 test: $(TEST_LIST)
