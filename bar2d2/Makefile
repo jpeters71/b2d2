@@ -24,9 +24,12 @@ ALL_LIST = $(DTO_LIST) $(PERSISTENCE) $(SERVICES) $(UI)
 CPU_TYPE = $(shell uname -m)
 ifeq ($(CPU_TYPE),arm7l)
 	GPIO_LIST = $(GPIO_RPI)
+	GPIO_LIB_GET = $(GOGET) github.com/stianeikeland/go-rpio 
 else
 	GPIO_LIST = $(GPIO_OTHER)
+	GPIO_LIB_GET =
 endif
+
 
 BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build) $(foreach int, $(GPIO_LIST), $(int)_build) 
 CLEAN_LIST = $(foreach int, $(ALL_LIST), $(int)_clean)
@@ -47,6 +50,7 @@ fmt: $(FMT_TEST)
 
 setup: 
 	$(GOGET) github.com/mattn/go-sqlite3
+	$(GPIO_LIB_GET)
 
 $(BUILD_LIST): %_build:  
 	cd ./$*; $(GOBUILD) .
