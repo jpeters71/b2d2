@@ -19,7 +19,7 @@ $(document).ready(function(){
         autoOpen: false,
         modal: true,
         width: 600,
-        height: 410,
+        height: 435,
         buttons: {
                   "Update": function() {
                       $(this).dialog("close");
