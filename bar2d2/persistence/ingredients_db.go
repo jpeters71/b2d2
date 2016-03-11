@@ -5,6 +5,7 @@ import (
 	"database/sql"
 )
 
+// GetAllIngredients returns all ingredients in the DB.
 func GetAllIngredients() ([]dto.Ingredient, error) {
 
 	aIngs := []dto.Ingredient{}
@@ -24,4 +25,24 @@ func GetAllIngredients() ([]dto.Ingredient, error) {
 	db.Close()
 
 	return aIngs, err
+}
+
+// GetIngredient retrieves an ingredient by it's ID
+func GetIngredient(id int) (dto.Ingredient, error) {
+	var ing dto.Ingredient
+	db, err := sql.Open("sqlite3", *pDBPath)
+	checkErr(err)
+
+	// query
+	rows, err := db.Query("SELECT ingredientId, title, description, brand, alcoholContent, pumpId FROM ingredients WHERE ingredientId=?", id)
+	checkErr(err)
+
+	for rows.Next() {
+		ing = dto.Ingredient{}
+		err = rows.Scan(&ing.Id, &ing.Title, &ing.Description, &ing.Brand, &ing.AlcoholContent, &ing.PumpId)
+		checkErr(err)
+	}
+	db.Close()
+
+	return ing, err
 }

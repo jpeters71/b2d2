@@ -26,6 +26,7 @@ func main() {
 	fmt.Printf("Hello, world.\n")
 	http.HandleFunc("/ui/", UIHandler)
 	http.HandleFunc("/svc/ingredients", services.IngredientHandler)
+	http.HandleFunc("/svc/ingredients/", services.IngredientHandler)
 	http.HandleFunc("/svc/recipes", services.RecipeHandler)
 	http.HandleFunc("/svc/recipes/", services.RecipeHandler)
 	http.HandleFunc("/svc/available-recipes", services.AvailableHandler)

@@ -72,11 +72,20 @@ ul.nav li{
   position:relative;
   background: linear-gradient(#FACC2E, #F4FA58);
 }
-.drink_item{
+.drink_item, .ingredient_item {
   list-style-type: none;
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 32px;
 }
+#ingredient_popup {
+    width: 100%;
+    clear: both;
+}
+#ingredient_popup>input, #ingredient_popup>textarea {
+    width: 100%;
+    clear: both;
+}
+
 .drink_item>img{
   width: 80px;
   height: 80px;

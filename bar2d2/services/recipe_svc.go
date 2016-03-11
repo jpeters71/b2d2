@@ -13,7 +13,6 @@ import (
 func RecipeHandler(w http.ResponseWriter, r *http.Request) {
 
 	if strings.EqualFold(r.Method, "GET") {
-
 		if strings.HasPrefix(r.URL.Path, "/svc/recipes/") {
 			// Get the recipe ID
 			id := r.URL.Path[len("/svc/recipes/"):]
@@ -28,7 +27,7 @@ func RecipeHandler(w http.ResponseWriter, r *http.Request) {
 			jsonRecipes, _ := json.Marshal(aRecipes)
 
 			fmt.Fprintf(w, string(jsonRecipes))
-			w.Header().Set("Content-Type", "application/json")
 		}
+		w.Header().Set("Content-Type", "application/json")
 	}
 }
