@@ -25,7 +25,7 @@ INSTALL_LIST = $(foreach int, $(ALL_LIST), $(int)_install)
 TEST_LIST = $(foreach int, $(ALL_LIST), $(int)_test)
 FMT_TEST = $(foreach int, $(ALL_LIST), $(int)_fmt)
 
-all: build
+all: $(info CPU is $(PROCESSOR_ARCHITECTURE)) build
 
 build: $(BUILD_LIST)
 clean: $(CLEAN_LIST)
