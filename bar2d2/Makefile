@@ -22,7 +22,7 @@ GPIO_OTHER := gpio_stub
 ALL_LIST = $(DTO_LIST) $(PERSISTENCE) $(SERVICES) $(UI)
 
 CPU_TYPE = $(shell uname -m)
-ifeq ($(CPU_TYPE),arm7l)
+ifeq ($(CPU_TYPE),armv7l)
 	GPIO_LIST = $(GPIO_RPI)
 	GPIO_LIB_GET = $(GOGET) github.com/stianeikeland/go-rpio 
 else
