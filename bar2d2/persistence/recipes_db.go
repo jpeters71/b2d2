@@ -18,7 +18,7 @@ func GetAllRecipes() ([]dto.Recipe, error) {
 
 	for rows.Next() {
 		rep := dto.Recipe{}
-		err = rows.Scan(&rep.Id, &rep.Title, &rep.Description, &rep.Image)
+		err = rows.Scan(&rep.ID, &rep.Title, &rep.Description, &rep.Image)
 		checkErr(err)
 		aRecipes = append(aRecipes, rep)
 	}
@@ -39,7 +39,7 @@ func GetRecipe(id int) (dto.Recipe, error) {
 
 	for rows.Next() {
 		rep = dto.Recipe{}
-		err = rows.Scan(&rep.Id, &rep.Title, &rep.Description, &rep.Image)
+		err = rows.Scan(&rep.ID, &rep.Title, &rep.Description, &rep.Image)
 		checkErr(err)
 	}
 	db.Close()

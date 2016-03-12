@@ -1,4 +1,6 @@
 // Setup everyting.
+var iCurrRepId = -1;
+
 $(document).ready(function(){
     // This is the dialog for when a user selects a drink.
     $("#drink_popup").dialog({
@@ -8,13 +10,48 @@ $(document).ready(function(){
         height: 350,
         buttons: {
                   "Make It": function() {
-                      $(this).dialog("close");
+                        var title = $(this).dialog( "option", "title" );
+                        $(this).dialog("close");
+                        var repId = iCurrRepId;
+                        $("#make_it_popup").dialog({
+                            title: "Making a " + title
+                        });
+
+                        $("#make_it_popup_text").html("");
+                        $("#make_it_popup_img").show();
+                        $("#make_it_popup_img").attr("src", "styles/ajax-loader.gif");
+                        $("#make_it_popup").dialog("open");
+                        
+                        // Run ajax to get this item
+                        var jqxhr = $.ajax({
+                            url: "/svc/recipes/" + iCurrRepId,
+                            type: "POST", 
+                            statusCode: {
+                                201: function() {
+                                    $("#make_it_popup_img").hide();
+                                    $("#make_it_popup_text").html("Done!<br/><small>Share and Enjoy!&trade;</small>");
+                                }
+                            }                            
+                        })
+                        .fail(function(data) {
+                            $("#make_it_popup_img").hide();
+                            $("#make_it_popup_text").html("ERROR!<br/><em>" + data.responseText + "</em>");
+                            
+                        });
                   },
                   Cancel: function() {
                       $(this).dialog("close");
                   }
         },        
     });
+
+    $("#make_it_popup").dialog({
+        autoOpen: false,
+        modal: true,
+        width: 300,
+        height: 300
+    });
+
     $("#ingredient_popup").dialog({
         autoOpen: false,
         modal: true,
@@ -45,7 +82,7 @@ $(document).ready(function(){
             for (var i=0; i < data.length; i++) {
                 var item = data[i];
 
-                html += "<li class='drink_item' id='" + item.Id + "''><img src='data:image/png;base64," + item.Image + "'/>" + item.Title + "</li>";
+                html += "<li class='drink_item' id='" + item.ID + "''><img src='data:image/png;base64," + item.Image + "'/>" + item.Title + "</li>";
             }
             html += "</ul>";
             $("#title").html("Select Drink");
@@ -55,6 +92,7 @@ $(document).ready(function(){
                 // Set things up.  Start by clearing stuff
                 $("#drink_popup_text").html("");
                 $("#drink_popup_img").attr("src", "styles/ajax-loader.gif");
+                iCurrRepId = this.id;
                 $("#drink_popup").dialog("open");
                 
                 // Run ajax to get this item
@@ -77,7 +115,7 @@ $(document).ready(function(){
             for (var i=0; i < data.length; i++) {
                 var item = data[i];
 
-                html += "<li class='drink_item' id='" + item.Id + "''><img src='data:image/png;base64," + item.Image + "'/>" + item.Title + "</li>";
+                html += "<li class='drink_item' id='" + item.ID + "''><img src='data:image/png;base64," + item.Image + "'/>" + item.Title + "</li>";
             }
             html += "</ul>";
             $("#title").html("Recipes");
@@ -102,7 +140,7 @@ $(document).ready(function(){
             for (var i=0; i < data.length; i++) {
                 var item = data[i];
 
-                html += "<li class='ingredient_item ' id='" + item.Id + "''>" + item.Title + "</li>";
+                html += "<li class='ingredient_item ' id='" + item.ID + "''>" + item.Title + "</li>";
             }
             html += "</ul>";
             $("#title").html("Ingredients");
@@ -123,7 +161,7 @@ $(document).ready(function(){
                     });
                     $("#ingredient_popup_brand").val(data.Brand);
                     $("#ingredient_popup_proof").val(data.AlcoholContent * 2);
-                    $("#ingredient_popup_pump").val(data.PumpId);
+                    $("#ingredient_popup_pump").val(data.PumpID);
                     $("#ingredient_popup_description").val(data.Description);
                 });
             });

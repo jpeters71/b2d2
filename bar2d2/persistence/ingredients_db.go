@@ -18,7 +18,7 @@ func GetAllIngredients() ([]dto.Ingredient, error) {
 
 	for rows.Next() {
 		ing := dto.Ingredient{}
-		err = rows.Scan(&ing.Id, &ing.Title, &ing.Description, &ing.Brand, &ing.AlcoholContent, &ing.PumpId)
+		err = rows.Scan(&ing.ID, &ing.Title, &ing.Description, &ing.Brand, &ing.AlcoholContent, &ing.PumpID)
 		checkErr(err)
 		aIngs = append(aIngs, ing)
 	}
@@ -39,7 +39,7 @@ func GetIngredient(id int) (dto.Ingredient, error) {
 
 	for rows.Next() {
 		ing = dto.Ingredient{}
-		err = rows.Scan(&ing.Id, &ing.Title, &ing.Description, &ing.Brand, &ing.AlcoholContent, &ing.PumpId)
+		err = rows.Scan(&ing.ID, &ing.Title, &ing.Description, &ing.Brand, &ing.AlcoholContent, &ing.PumpID)
 		checkErr(err)
 	}
 	db.Close()

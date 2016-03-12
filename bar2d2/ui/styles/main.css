@@ -121,12 +121,18 @@ span[class ^= "icon"]{
   transition: all 0.3s linear;
 }
 
-#drink_popup_img {
+#drink_popup_img{
     float: left;
     width: 150px;
     height: 150px;
 }
-
+#make_it_popup_img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
 #drink_popup_text {
   float: right;
   width: 350px;

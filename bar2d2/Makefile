@@ -38,12 +38,11 @@ else
 endif
 
 
-BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build) $(foreach int, $(GPIO_LIST), $(int)_build) 
-CLEAN_LIST = $(foreach int, $(ALL_LIST), $(int)_clean)
-INSTALL_LIST = $(foreach int, $(ALL_LIST), $(int)_install)
-TEST_LIST = $(foreach int, $(ALL_LIST), $(int)_test)
-FMT_TEST = $(foreach int, $(ALL_LIST), $(int)_fmt)
-
+BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build) $(foreach intg, $(GPIO_LIST), $(intg)_build)  
+CLEAN_LIST = $(foreach int, $(ALL_LIST), $(int)_clean) $(foreach intg, $(GPIO_LIST), $(intg)_clean)
+INSTALL_LIST = $(foreach int, $(ALL_LIST), $(int)_install) $(foreach intg, $(GPIO_LIST), $(intg)_install)
+TEST_LIST = $(foreach int, $(ALL_LIST), $(int)_test) $(foreach intg, $(GPIO_LIST), $(intg)_test)
+FMT_TEST = $(foreach int, $(ALL_LIST), $(int)_fmt) $(foreach intg, $(GPIO_LIST), $(intg)_fmt)
 
 all: $(info CPU is $(CPU_TYPE)) build
 
