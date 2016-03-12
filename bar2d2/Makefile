@@ -1,3 +1,10 @@
+#
+# Makefile for Bar2D2
+#
+# Use target 'setup' to download needed dependencies
+#
+# Use target 'build' or no target to build everything.
+#
 
 # Go parameters
 GOCMD=go
