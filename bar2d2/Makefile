@@ -22,27 +22,24 @@ DTO_LIST := dto
 PERSISTENCE := persistence
 SERVICES := services
 UI := ui
-GPIO_RPI := gpio_rpi
-GPIO_OTHER := gpio_stub
+GPIO := gpio
 
 # List building
-ALL_LIST = $(DTO_LIST) $(PERSISTENCE) $(SERVICES) $(UI)
+ALL_LIST = $(DTO_LIST) $(PERSISTENCE) $(GPIO) $(SERVICES) $(UI)
 
 CPU_TYPE = $(shell uname -m)
 ifeq ($(CPU_TYPE),armv7l)
-	GPIO_LIST = $(GPIO_RPI)
 	GPIO_LIB_GET = $(GOGET) github.com/stianeikeland/go-rpio 
 else
-	GPIO_LIST = $(GPIO_OTHER)
 	GPIO_LIB_GET =
 endif
 
 
-BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build) $(foreach intg, $(GPIO_LIST), $(intg)_build)  
-CLEAN_LIST = $(foreach int, $(ALL_LIST), $(int)_clean) $(foreach intg, $(GPIO_LIST), $(intg)_clean)
-INSTALL_LIST = $(foreach int, $(ALL_LIST), $(int)_install) $(foreach intg, $(GPIO_LIST), $(intg)_install)
-TEST_LIST = $(foreach int, $(ALL_LIST), $(int)_test) $(foreach intg, $(GPIO_LIST), $(intg)_test)
-FMT_TEST = $(foreach int, $(ALL_LIST), $(int)_fmt) $(foreach intg, $(GPIO_LIST), $(intg)_fmt)
+BUILD_LIST = $(foreach int, $(ALL_LIST), $(int)_build) 
+CLEAN_LIST = $(foreach int, $(ALL_LIST), $(int)_clean)
+INSTALL_LIST = $(foreach int, $(ALL_LIST), $(int)_install)
+TEST_LIST = $(foreach int, $(ALL_LIST), $(int)_test)
+FMT_TEST = $(foreach int, $(ALL_LIST), $(int)_fmt)
 
 all: $(info CPU is $(CPU_TYPE)) build
 

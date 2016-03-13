@@ -1,3 +1,5 @@
+// +build 386 amd64
+
 package gpio
 
 import "fmt"
@@ -12,17 +14,28 @@ const (
 	Write
 )
 
+// Init should be called before any other GPIO operations
+func Init() {
+	fmt.Printf("Init() called\n")
+}
+
 // SetMode sets the specified mode on the given pin.
 func SetMode(iPin int16, mode Mode) {
-	fmt.Printf("RPI! SetMode on pin %v, mode: %v\n", iPin, mode)
+	fmt.Printf("SetMode on pin %v, mode: %v\n", iPin, mode)
 }
 
 // SetHigh sets the specified pin to high
 func SetHigh(iPin int16) {
-	fmt.Printf("RPI! SetHigh on pin %v\n", iPin)
+	fmt.Printf("SetHigh on pin %v\n", iPin)
 }
 
 // SetLow sets the specified pin to low
 func SetLow(iPin int16) {
-	fmt.Printf("RPI! SetLow on pin %v\n", iPin)
+	fmt.Printf("SetLow on pin %v\n", iPin)
+}
+
+// Destroy should be called when you're done with GPIO operations.  Once
+// Destroy is called, Init() must be called again before more GPIO operations.
+func Destroy() {
+	fmt.Printf("Destroy called\n")
 }

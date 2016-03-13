@@ -2,7 +2,7 @@ package services
 
 import (
 	"bozosonparade/b2d2/bar2d2/dto"
-	"bozosonparade/b2d2/bar2d2/gpio_rpi"
+	"bozosonparade/b2d2/bar2d2/gpio"
 	"bozosonparade/b2d2/bar2d2/persistence"
 	"encoding/json"
 	"fmt"
@@ -46,6 +46,9 @@ func RecipeHandler(w http.ResponseWriter, r *http.Request) {
 
 func makeDrink(w http.ResponseWriter, iID int) {
 	var wg sync.WaitGroup
+
+	gpio.Init()
+	defer gpio.Destroy()
 
 	if iID <= 0 {
 		http.Error(w, "Invalid recipe ID", 400)
