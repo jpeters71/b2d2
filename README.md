@@ -4,6 +4,8 @@ This project represents code used to run my robotic bartender.  The drinks, ingr
 
 ## Architecture
 Currently, the Bar2D2 application runs a set of services written in Go with a web based front end written in HTML, Javascript, CSS.  When deployed on the Raspberry Pi, a script starts the Bar2d2 services (oddly named ui/ui...) and then starts X Windows with Chromium.  The web front end uses RESTful services to talk to the Bar2d2 services.  This is not ideal since X Windows and Chromium are fairly heavy on the Raspberry Pi.  Performance-wise, it can take X and Chrome up to 45 seconds to start before the app even starts.  I'm looking into changing this using a UI written in OpenVG natively on the Raspberry Pi, but that's a longer term project.
+![alt tag](https://github.com/jpeters71/b2d2/blob/master/b2d2.png)
+
 
 ## Building
 I've setup a Makefile to build everything, though I haven't tested it extensively.  Before you start, make sure you have Go and an implementation of GCC setup and in your path (on Windows, I'm using MinGW implementation of GCC).  Then, to get the required Go dependencies run this once: `make setup`
